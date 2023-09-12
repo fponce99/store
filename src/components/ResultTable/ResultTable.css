@@ -1,0 +1,9 @@
+.ResultContainer {
+    grid-area: results;
+}
+
+.ResultContainer .CardResultsContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 5%;
+}
