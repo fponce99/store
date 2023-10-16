@@ -1,31 +1,34 @@
 import { useContext } from 'react';
 import { SearchContext } from '../../contexts/SearchContext';
 import { Card } from './Card'
+import { Modal } from '../Modal'
 import './ResultTable.css'
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 function ResultTable () {
     const {
         searchedProducts,
-        isLoading
+        isLoading,
+        isOpen,
       } = useContext(SearchContext);
     return (
         <div className='ResultContainer'>
             <h2>Results:</h2>
             <div className='CardResultsContainer'>
                 {   isLoading ?
-                    <AiOutlineLoading3Quarters />
+                    <span className="loader"></span>
                     :
                     searchedProducts.map((product, index) => 
-                        <Card 
+                        <Card
                             key={index}
                             image = {product.image}
                             title = {product.title}
                             price = {product.price}
+                            description = {product.description}
                         />
                     )
                 }
             </div>
+            {isOpen && <Modal />}
         </div>
     )
 }
